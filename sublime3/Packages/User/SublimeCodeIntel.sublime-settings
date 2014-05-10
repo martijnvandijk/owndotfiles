@@ -1,0 +1,12 @@
+{
+    "codeintel_config": {
+        "Python": {
+            "env": {
+                /*
+                "PATH": "/usr/local/bin:/usr/local/sbin:$PATH",
+                "PYTHONPATH": "/usr/lib/python2.7/site-packages:/usr/local/lib/python:$PYTHONPATH"
+                */
+            }
+        },
+    }
+}

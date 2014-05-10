@@ -1,0 +1,1428 @@
+[
+    {
+        "id": "preferences", 
+        "mnemonic": "n", 
+        "children": [
+            {
+                "command": "show_arduino_menu", 
+                "checkbox": true, 
+                "caption": "Show Arduino Menu"
+            }
+        ], 
+        "caption": "Preferences"
+    }, 
+    {
+        "id": "arduino", 
+        "mnemonic": null, 
+        "children": [
+            {
+                "command": "new_sketch", 
+                "caption": "New Sketch"
+            }, 
+            {
+                "id": "sketchbook", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "id": "adafruit_motor_shield_v2_library", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "id": "examples", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/Accel_ConstantSpeed"
+                                        }, 
+                                        "caption": "Accel_ConstantSpeed"
+                                    }, 
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/Accel_MultiStepper"
+                                        }, 
+                                        "caption": "Accel_MultiStepper"
+                                    }, 
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/DCMotorTest"
+                                        }, 
+                                        "caption": "DCMotorTest"
+                                    }, 
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/MotorParty"
+                                        }, 
+                                        "caption": "MotorParty"
+                                    }, 
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/StackingTest"
+                                        }, 
+                                        "caption": "StackingTest"
+                                    }, 
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/Adafruit_Motor_Shield_V2_Library/examples/StepperTest"
+                                        }, 
+                                        "caption": "StepperTest"
+                                    }
+                                ], 
+                                "caption": "examples"
+                            }
+                        ], 
+                        "caption": "Adafruit_Motor_Shield_V2_Library"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/EtherTest"
+                        }, 
+                        "caption": "EtherTest"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/au"
+                        }, 
+                        "caption": "au"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/beeper"
+                        }, 
+                        "caption": "beeper"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/gpstest"
+                        }, 
+                        "caption": "gpstest"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/lcdtest"
+                        }, 
+                        "caption": "lcdtest"
+                    }, 
+                    {
+                        "id": "libraries", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "id": "adafruit_bmp085_unified", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_BMP085_Unified/examples/sensorapi"
+                                                }, 
+                                                "caption": "sensorapi"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "Adafruit_BMP085_Unified"
+                            }, 
+                            {
+                                "id": "adafruit_motor_shield_v2_library", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/Accel_ConstantSpeed"
+                                                }, 
+                                                "caption": "Accel_ConstantSpeed"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/Accel_MultiStepper"
+                                                }, 
+                                                "caption": "Accel_MultiStepper"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/DCMotorTest"
+                                                }, 
+                                                "caption": "DCMotorTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/MotorParty"
+                                                }, 
+                                                "caption": "MotorParty"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/StackingTest"
+                                                }, 
+                                                "caption": "StackingTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/StepperTest"
+                                                }, 
+                                                "caption": "StepperTest"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "Adafruit_Motor_Shield_V2_Library"
+                            }, 
+                            {
+                                "id": "capacitivesensor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/CapacitiveSensor/examples/CapacitiveSensorSketch"
+                                                }, 
+                                                "caption": "CapacitiveSensorSketch"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "CapacitiveSensor"
+                            }, 
+                            {
+                                "id": "dhtsensor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/DHTsensor/examples/DHTtester"
+                                                }, 
+                                                "caption": "DHTtester"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "DHTsensor"
+                            }, 
+                            {
+                                "id": "lcd_i2c", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/BlinkingCursor"
+                                                }, 
+                                                "caption": "BlinkingCursor"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/CustomChars"
+                                                }, 
+                                                "caption": "CustomChars"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/HelloWorld"
+                                                }, 
+                                                "caption": "HelloWorld"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/SerialDisplay"
+                                                }, 
+                                                "caption": "SerialDisplay"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "LCD_I2C"
+                            }, 
+                            {
+                                "id": "rfid", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/libraries/RFID/examples"
+                                        }, 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "RFID"
+                            }, 
+                            {
+                                "command": "open_sketch", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/TinyGPS"
+                                }, 
+                                "caption": "TinyGPS"
+                            }, 
+                            {
+                                "id": "afmotor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/AFMotor_ConstantSpeed"
+                                                }, 
+                                                "caption": "AFMotor_ConstantSpeed"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/AFMotor_MultiStepper"
+                                                }, 
+                                                "caption": "AFMotor_MultiStepper"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/MotorParty"
+                                                }, 
+                                                "caption": "MotorParty"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/MotorTest"
+                                                }, 
+                                                "caption": "MotorTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/StepperTest"
+                                                }, 
+                                                "caption": "StepperTest"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "afmotor"
+                            }, 
+                            {
+                                "id": "ethercard", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/JeeUdp"
+                                                }, 
+                                                "caption": "JeeUdp"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/SSDP"
+                                                }, 
+                                                "caption": "SSDP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/backSoon"
+                                                }, 
+                                                "caption": "backSoon"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/etherNode"
+                                                }, 
+                                                "caption": "etherNode"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getDHCPandDNS"
+                                                }, 
+                                                "caption": "getDHCPandDNS"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getStaticIP"
+                                                }, 
+                                                "caption": "getStaticIP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getViaDNS"
+                                                }, 
+                                                "caption": "getViaDNS"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/multipacket"
+                                                }, 
+                                                "caption": "multipacket"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/multipacketSD"
+                                                }, 
+                                                "caption": "multipacketSD"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/nanether"
+                                                }, 
+                                                "caption": "nanether"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/noipClient"
+                                                }, 
+                                                "caption": "noipClient"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/pachube"
+                                                }, 
+                                                "caption": "pachube"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/pings"
+                                                }, 
+                                                "caption": "pings"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/rbbb_server"
+                                                }, 
+                                                "caption": "rbbb_server"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/stashTest"
+                                                }, 
+                                                "caption": "stashTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/testDHCP"
+                                                }, 
+                                                "caption": "testDHCP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/twitter"
+                                                }, 
+                                                "caption": "twitter"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/udpListener"
+                                                }, 
+                                                "caption": "udpListener"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/webClient"
+                                                }, 
+                                                "caption": "webClient"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "ethercard"
+                            }
+                        ], 
+                        "caption": "libraries"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/new"
+                        }, 
+                        "caption": "new"
+                    }, 
+                    {
+                        "command": "open_sketch", 
+                        "args": {
+                            "folder": "/home/martijn/Documents/Sketchbook/sketch_nov21a"
+                        }, 
+                        "caption": "sketch_nov21a"
+                    }, 
+                    {
+                        "command": null, 
+                        "caption": "-"
+                    }
+                ], 
+                "caption": "Sketchbook"
+            }, 
+            {
+                "id": "examples", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "id": "general", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "id": "adafruit_bmp085_unified", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_BMP085_Unified/examples/sensorapi"
+                                                }, 
+                                                "caption": "sensorapi"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "Adafruit_BMP085_Unified"
+                            }, 
+                            {
+                                "id": "adafruit_motor_shield_v2_library", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/Accel_ConstantSpeed"
+                                                }, 
+                                                "caption": "Accel_ConstantSpeed"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/Accel_MultiStepper"
+                                                }, 
+                                                "caption": "Accel_MultiStepper"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/DCMotorTest"
+                                                }, 
+                                                "caption": "DCMotorTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/MotorParty"
+                                                }, 
+                                                "caption": "MotorParty"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/StackingTest"
+                                                }, 
+                                                "caption": "StackingTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library/examples/StepperTest"
+                                                }, 
+                                                "caption": "StepperTest"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "Adafruit_Motor_Shield_V2_Library"
+                            }, 
+                            {
+                                "id": "capacitivesensor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/CapacitiveSensor/examples/CapacitiveSensorSketch"
+                                                }, 
+                                                "caption": "CapacitiveSensorSketch"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "CapacitiveSensor"
+                            }, 
+                            {
+                                "id": "dhtsensor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/DHTsensor/examples/DHTtester"
+                                                }, 
+                                                "caption": "DHTtester"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "DHTsensor"
+                            }, 
+                            {
+                                "id": "lcd_i2c", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/BlinkingCursor"
+                                                }, 
+                                                "caption": "BlinkingCursor"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/CustomChars"
+                                                }, 
+                                                "caption": "CustomChars"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/HelloWorld"
+                                                }, 
+                                                "caption": "HelloWorld"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C/examples/SerialDisplay"
+                                                }, 
+                                                "caption": "SerialDisplay"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "LCD_I2C"
+                            }, 
+                            {
+                                "id": "rfid", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "command": "open_sketch", 
+                                        "args": {
+                                            "folder": "/home/martijn/Documents/Sketchbook/libraries/RFID/examples"
+                                        }, 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "RFID"
+                            }, 
+                            {
+                                "command": "open_sketch", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/TinyGPS"
+                                }, 
+                                "caption": "TinyGPS"
+                            }, 
+                            {
+                                "id": "afmotor", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/AFMotor_ConstantSpeed"
+                                                }, 
+                                                "caption": "AFMotor_ConstantSpeed"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/AFMotor_MultiStepper"
+                                                }, 
+                                                "caption": "AFMotor_MultiStepper"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/MotorParty"
+                                                }, 
+                                                "caption": "MotorParty"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/MotorTest"
+                                                }, 
+                                                "caption": "MotorTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor/examples/StepperTest"
+                                                }, 
+                                                "caption": "StepperTest"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "afmotor"
+                            }, 
+                            {
+                                "id": "ethercard", 
+                                "mnemonic": null, 
+                                "children": [
+                                    {
+                                        "id": "examples", 
+                                        "mnemonic": null, 
+                                        "children": [
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/JeeUdp"
+                                                }, 
+                                                "caption": "JeeUdp"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/SSDP"
+                                                }, 
+                                                "caption": "SSDP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/backSoon"
+                                                }, 
+                                                "caption": "backSoon"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/etherNode"
+                                                }, 
+                                                "caption": "etherNode"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getDHCPandDNS"
+                                                }, 
+                                                "caption": "getDHCPandDNS"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getStaticIP"
+                                                }, 
+                                                "caption": "getStaticIP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/getViaDNS"
+                                                }, 
+                                                "caption": "getViaDNS"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/multipacket"
+                                                }, 
+                                                "caption": "multipacket"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/multipacketSD"
+                                                }, 
+                                                "caption": "multipacketSD"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/nanether"
+                                                }, 
+                                                "caption": "nanether"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/noipClient"
+                                                }, 
+                                                "caption": "noipClient"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/pachube"
+                                                }, 
+                                                "caption": "pachube"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/pings"
+                                                }, 
+                                                "caption": "pings"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/rbbb_server"
+                                                }, 
+                                                "caption": "rbbb_server"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/stashTest"
+                                                }, 
+                                                "caption": "stashTest"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/testDHCP"
+                                                }, 
+                                                "caption": "testDHCP"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/twitter"
+                                                }, 
+                                                "caption": "twitter"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/udpListener"
+                                                }, 
+                                                "caption": "udpListener"
+                                            }, 
+                                            {
+                                                "command": "open_sketch", 
+                                                "args": {
+                                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard/examples/webClient"
+                                                }, 
+                                                "caption": "webClient"
+                                            }
+                                        ], 
+                                        "caption": "examples"
+                                    }
+                                ], 
+                                "caption": "ethercard"
+                            }, 
+                            {
+                                "command": null, 
+                                "caption": "-"
+                            }
+                        ], 
+                        "caption": "General"
+                    }
+                ], 
+                "caption": "Examples"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "id": "import library", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "id": "general", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/AESLib"
+                                }, 
+                                "caption": "AESLib"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_BMP085_Unified"
+                                }, 
+                                "caption": "Adafruit_BMP085_Unified"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Motor_Shield_V2_Library"
+                                }, 
+                                "caption": "Adafruit_Motor_Shield_V2_Library"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/Adafruit_Sensor"
+                                }, 
+                                "caption": "Adafruit_Sensor"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/CapacitiveSensor"
+                                }, 
+                                "caption": "CapacitiveSensor"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/DHTsensor"
+                                }, 
+                                "caption": "DHTsensor"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/LCD_I2C"
+                                }, 
+                                "caption": "LCD_I2C"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/RFID"
+                                }, 
+                                "caption": "RFID"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/TinyGPS"
+                                }, 
+                                "caption": "TinyGPS"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/afmotor"
+                                }, 
+                                "caption": "afmotor"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/crypto"
+                                }, 
+                                "caption": "crypto"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": "/home/martijn/Documents/Sketchbook/libraries/ethercard"
+                                }, 
+                                "caption": "ethercard"
+                            }, 
+                            {
+                                "command": "import_library", 
+                                "args": {
+                                    "folder": ""
+                                }, 
+                                "caption": "-"
+                            }
+                        ], 
+                        "caption": "General"
+                    }
+                ], 
+                "caption": "Import Library"
+            }, 
+            {
+                "command": "show_sketch_folder", 
+                "caption": "Show Sketch Folder"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "command": "set_extra_flag", 
+                "caption": "Extra Flags"
+            }, 
+            {
+                "command": "compile_sketch", 
+                "caption": "Verify/Compile"
+            }, 
+            {
+                "command": "upload_sketch", 
+                "caption": "Upload"
+            }, 
+            {
+                "command": "upload_using_programmer", 
+                "caption": "Upload by Using Programmer"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "command": "burn_bootloader", 
+                "caption": "Burn Bootloader"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "id": "serial monitor", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "command": "start_serial_monitor", 
+                        "caption": "Start"
+                    }, 
+                    {
+                        "command": "stop_serial_monitor", 
+                        "caption": "Stop"
+                    }, 
+                    {
+                        "command": "send_serial_text", 
+                        "caption": "Send"
+                    }, 
+                    {
+                        "id": "baudrate", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 0
+                                }, 
+                                "caption": "300", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 1
+                                }, 
+                                "caption": "1200", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 2
+                                }, 
+                                "caption": "2400", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 3
+                                }, 
+                                "caption": "4800", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 4
+                                }, 
+                                "caption": "9600", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 5
+                                }, 
+                                "caption": "14400", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 6
+                                }, 
+                                "caption": "19200", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 7
+                                }, 
+                                "caption": "28800", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 8
+                                }, 
+                                "caption": "38400", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 9
+                                }, 
+                                "caption": "57600", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_baudrate", 
+                                "args": {
+                                    "baudrate": 10
+                                }, 
+                                "caption": "115200", 
+                                "checkbox": true
+                            }
+                        ], 
+                        "caption": "Baudrate"
+                    }, 
+                    {
+                        "id": "line ending", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "command": "choose_line_ending", 
+                                "args": {
+                                    "line_ending": 0
+                                }, 
+                                "caption": "None", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_line_ending", 
+                                "args": {
+                                    "line_ending": 1
+                                }, 
+                                "caption": "Newline", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_line_ending", 
+                                "args": {
+                                    "line_ending": 2
+                                }, 
+                                "caption": "Carriage return", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_line_ending", 
+                                "args": {
+                                    "line_ending": 3
+                                }, 
+                                "caption": "Both NL & CR", 
+                                "checkbox": true
+                            }
+                        ], 
+                        "caption": "Line Ending"
+                    }, 
+                    {
+                        "id": "display as", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "command": "choose_display_mode", 
+                                "args": {
+                                    "display_mode": 0
+                                }, 
+                                "caption": "Text", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_display_mode", 
+                                "args": {
+                                    "display_mode": 1
+                                }, 
+                                "caption": "Ascii", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_display_mode", 
+                                "args": {
+                                    "display_mode": 2
+                                }, 
+                                "caption": "Hex", 
+                                "checkbox": true
+                            }
+                        ], 
+                        "caption": "Display as"
+                    }
+                ], 
+                "caption": "Serial Monitor"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "command": "auto_format", 
+                "caption": "Auto Format"
+            }, 
+            {
+                "command": "archive_sketch", 
+                "caption": "Archive Sketch"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "id": "preferences", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "command": "choose_arduino_folder", 
+                        "caption": "Select Arduino Application Folder"
+                    }, 
+                    {
+                        "command": "change_sketchbook_folder", 
+                        "caption": "Change Sketchbook Folder"
+                    }, 
+                    {
+                        "command": "choose_build_folder", 
+                        "caption": "Select Build Folder"
+                    }, 
+                    {
+                        "id": "language", 
+                        "mnemonic": null, 
+                        "children": [
+                            {
+                                "command": "choose_language", 
+                                "args": {
+                                    "language": 0
+                                }, 
+                                "caption": "Deutsch (German)", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_language", 
+                                "args": {
+                                    "language": 1
+                                }, 
+                                "caption": "English (English)", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_language", 
+                                "args": {
+                                    "language": 2
+                                }, 
+                                "caption": "fran\u00e7ais (French)", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_language", 
+                                "args": {
+                                    "language": 3
+                                }, 
+                                "caption": "\u65e5\u672c\u8a9e (Japanese)", 
+                                "checkbox": true
+                            }, 
+                            {
+                                "command": "choose_language", 
+                                "args": {
+                                    "language": 4
+                                }, 
+                                "caption": "\u7b80\u4f53\u4e2d\u6587 (Chinese Simplified)", 
+                                "checkbox": true
+                            }
+                        ], 
+                        "caption": "Language"
+                    }
+                ], 
+                "caption": "Preferences"
+            }, 
+            {
+                "command": "set_global_setting", 
+                "checkbox": true, 
+                "caption": "Global Setting"
+            }, 
+            {
+                "command": "set_bare_gcc_only", 
+                "checkbox": true, 
+                "caption": "Bare GCC Build (No Arduino code-munging)"
+            }, 
+            {
+                "command": "set_full_compilation", 
+                "checkbox": true, 
+                "caption": "Full Compilation"
+            }, 
+            {
+                "id": "show verbose output", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "command": "show_compilation_output", 
+                        "checkbox": true, 
+                        "caption": "Compilation"
+                    }, 
+                    {
+                        "command": "show_upload_output", 
+                        "checkbox": true, 
+                        "caption": "Upload"
+                    }
+                ], 
+                "caption": "Show Verbose Output"
+            }, 
+            {
+                "command": "verify_code", 
+                "checkbox": true, 
+                "caption": "Verify Code after Upload"
+            }, 
+            {
+                "command": null, 
+                "caption": "-"
+            }, 
+            {
+                "id": "references", 
+                "mnemonic": null, 
+                "children": [
+                    {
+                        "command": "open_ref", 
+                        "args": {
+                            "url": "Guide_index"
+                        }, 
+                        "caption": "Getting Started"
+                    }, 
+                    {
+                        "command": "open_ref", 
+                        "args": {
+                            "url": "Guide_Troubleshooting"
+                        }, 
+                        "caption": "Troubleshooting"
+                    }, 
+                    {
+                        "command": "open_ref", 
+                        "args": {
+                            "url": "index"
+                        }, 
+                        "caption": "Reference"
+                    }, 
+                    {
+                        "command": "find_in_reference", 
+                        "caption": "Find in Reference"
+                    }, 
+                    {
+                        "command": "open_ref", 
+                        "args": {
+                            "url": "FAQ"
+                        }, 
+                        "caption": "Frequently Asked Questions"
+                    }, 
+                    {
+                        "command": "open_url", 
+                        "args": {
+                            "url": "http://arduino.cc"
+                        }, 
+                        "caption": "Visit Arduino Website"
+                    }
+                ], 
+                "caption": "References"
+            }, 
+            {
+                "command": "about_stino", 
+                "caption": "About Stino"
+            }
+        ], 
+        "caption": "Arduino"
+    }
+]
