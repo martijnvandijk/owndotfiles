@@ -7,147 +7,147 @@
 # {translator} {EMAIL@ADDRESS}
 #
 
-msgid "Change Sketchbook Folder"
-msgstr "Change Sketchbook Folder"
-
-msgid "Verify/Compile"
-msgstr "Verify/Compile"
-
-msgid "Show Sketch Folder"
-msgstr "Show Sketch Folder"
-
-msgid "Stop"
-msgstr "Stop"
-
-msgid "Compilation"
-msgstr "Compilation"
-
-msgid "Line Ending"
-msgstr "Line Ending"
-
 msgid "Programmer"
 msgstr "Programmer"
-
-msgid "Show Verbose Output"
-msgstr "Show Verbose Output"
-
-msgid "Reference"
-msgstr "Reference"
-
-msgid "Serial Monitor"
-msgstr "Serial Monitor"
-
-msgid "Send"
-msgstr "Send"
-
-msgid "Start"
-msgstr "Start"
-
-msgid "Language"
-msgstr "Language"
-
-msgid "Import Library"
-msgstr "Import Library"
-
-msgid "Display as"
-msgstr "Display as"
-
-msgid "Find in Reference"
-msgstr "Find in Reference"
-
-msgid "Sketchbook"
-msgstr "Sketchbook"
-
-msgid "Burn Bootloader"
-msgstr "Burn Bootloader"
-
-msgid "Sketchbook is changed to {0}.\n"
-msgstr "Sketchbook is changed to {0}.\n"
-
-msgid "Archive Sketch"
-msgstr "Archive Sketch"
-
-msgid "Writing {0} failed.\n"
-msgstr "Writing {0} failed.\n"
-
-msgid "References"
-msgstr "References"
-
-msgid "Name for New Sketch"
-msgstr "Name for New Sketch"
-
-msgid "Extra Flags"
-msgstr "Extra Flags"
-
-msgid "Show Arduino Menu"
-msgstr "Show Arduino Menu"
-
-msgid "Verify Code after Upload"
-msgstr "Verify Code after Upload"
-
-msgid "Baudrate"
-msgstr "Baudrate"
-
-msgid "Visit Arduino Website"
-msgstr "Visit Arduino Website"
-
-msgid "Getting Started"
-msgstr "Getting Started"
-
-msgid "Select Build Folder"
-msgstr "Select Build Folder"
-
-msgid "Writing {0} done.\n"
-msgstr "Writing {0} done.\n"
-
-msgid "Upload by Using Programmer"
-msgstr "Upload by Using Programmer"
-
-msgid "Full Compilation"
-msgstr "Full Compilation"
-
-msgid "Troubleshooting"
-msgstr "Troubleshooting"
-
-msgid "Select Arduino Application Folder"
-msgstr "Select Arduino Application Folder"
 
 msgid "Frequently Asked Questions"
 msgstr "Frequently Asked Questions"
 
-msgid "Preferences"
-msgstr "Preferences"
+msgid "Examples"
+msgstr "Examples"
+
+msgid "Visit Arduino Website"
+msgstr "Visit Arduino Website"
 
 msgid "New Sketch"
 msgstr "New Sketch"
 
-msgid "Global Setting"
-msgstr "Global Setting"
+msgid "Line Ending"
+msgstr "Line Ending"
 
-msgid "Examples"
-msgstr "Examples"
+msgid "References"
+msgstr "References"
 
 msgid "About Stino"
 msgstr "About Stino"
 
-msgid "Build folder is changed to {0}.\n"
-msgstr "Build folder is changed to {0}.\n"
-
-msgid "Arduino Application is found at {0}.\n"
-msgstr "Arduino Application is found at {0}.\n"
-
-msgid "Bare GCC Build (No Arduino code-munging)"
-msgstr "Bare GCC Build (No Arduino code-munging)"
-
-msgid "Auto Format"
-msgstr "Auto Format"
-
-msgid "Serial Port"
-msgstr "Serial Port"
+msgid "Show Sketch Folder"
+msgstr "Show Sketch Folder"
 
 msgid "Upload"
 msgstr "Upload"
 
+msgid "Name for New Sketch"
+msgstr "Name for New Sketch"
+
+msgid "Getting Started"
+msgstr "Getting Started"
+
+msgid "Serial Port"
+msgstr "Serial Port"
+
+msgid "Build folder is changed to {0}.\n"
+msgstr "Build folder is changed to {0}.\n"
+
+msgid "Sketchbook"
+msgstr "Sketchbook"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Arduino Application is found at {0}.\n"
+msgstr "Arduino Application is found at {0}.\n"
+
+msgid "Auto Format"
+msgstr "Auto Format"
+
+msgid "Burn Bootloader"
+msgstr "Burn Bootloader"
+
+msgid "Display as"
+msgstr "Display as"
+
+msgid "Baudrate"
+msgstr "Baudrate"
+
+msgid "Reference"
+msgstr "Reference"
+
+msgid "Import Library"
+msgstr "Import Library"
+
+msgid "Upload by Using Programmer"
+msgstr "Upload by Using Programmer"
+
+msgid "Preferences"
+msgstr "Preferences"
+
+msgid "Select Build Folder"
+msgstr "Select Build Folder"
+
+msgid "Select Arduino Application Folder"
+msgstr "Select Arduino Application Folder"
+
+msgid "Compilation"
+msgstr "Compilation"
+
+msgid "Writing {0} done.\n"
+msgstr "Writing {0} done.\n"
+
+msgid "Serial Monitor"
+msgstr "Serial Monitor"
+
+msgid "Archive Sketch"
+msgstr "Archive Sketch"
+
+msgid "Verify/Compile"
+msgstr "Verify/Compile"
+
+msgid "Writing {0} failed.\n"
+msgstr "Writing {0} failed.\n"
+
+msgid "Full Compilation"
+msgstr "Full Compilation"
+
+msgid "Language"
+msgstr "Language"
+
+msgid "Troubleshooting"
+msgstr "Troubleshooting"
+
+msgid "Show Arduino Menu"
+msgstr "Show Arduino Menu"
+
+msgid "Show Verbose Output"
+msgstr "Show Verbose Output"
+
+msgid "Sketchbook is changed to {0}.\n"
+msgstr "Sketchbook is changed to {0}.\n"
+
+msgid "Change Sketchbook Folder"
+msgstr "Change Sketchbook Folder"
+
+msgid "Global Setting"
+msgstr "Global Setting"
+
+msgid "Bare GCC Build (No Arduino code-munging)"
+msgstr "Bare GCC Build (No Arduino code-munging)"
+
+msgid "Extra Flags"
+msgstr "Extra Flags"
+
+msgid "Stop"
+msgstr "Stop"
+
+msgid "Verify Code after Upload"
+msgstr "Verify Code after Upload"
+
+msgid "Find in Reference"
+msgstr "Find in Reference"
+
 msgid "Extra compilation flags:"
 msgstr "Extra compilation flags:"
+
+msgid "Send"
+msgstr "Send"
 
