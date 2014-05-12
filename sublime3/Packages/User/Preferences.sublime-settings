@@ -8,15 +8,14 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
-		"Git",
-		"Markdown Preview",
-		"MarkdownEditing",
-		"PlainTasks",
 		"Jedi - Python autocompletion",
-		"SideBarEnhancements",
+		"PlainTasks",
 		"Theme - Soda",
-		"WordCount"
+		"WordCount",
+		"Markdown",
+		"Markdown Preview",
+		"SideBarEnhancements",
+		"Git"
 	],
 	"ignored_words":
 	[
