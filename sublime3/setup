@@ -1,0 +1,10 @@
+#!/bin/sh
+# Setup a machine for Sublime Text 2
+set -x
+
+# symlink settings in
+sublime_dir=$HOME/.config/sublime-text-3/
+mv "$sublime_dir" "$sublime_dir.backup"
+mkdir -p $HOME/config/sublime-text-3/ # in case the st3 directory doesn't exist (yet)
+ln -s "$ZSH/sublime3/Installed\ Packages" "$sublime_dir/Installed\ Packages"
+ln -s "$ZSH/sublime3/Packages" "$sublime_dir/Packages"
