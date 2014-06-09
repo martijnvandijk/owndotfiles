@@ -19,24 +19,6 @@
 			<key>include</key>
 			<string>source.c++</string>
 		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b(MICROSTEPPING|FORWARD|BACKWARD|BRAKE|RELEASE|SINGLE|DOUBLE|INTERLEAVE|MICROSTEP|GPS_INVALID_AGE|GPS_INVALID_ANGLE|GPS_INVALID_ALTITUDE|GPS_INVALID_DATE|GPS_INVALID_TIME|MICROSTEPPING|FORWARD|BACKWARD|BRAKE|RELEASE|SINGLE|DOUBLE|INTERLEAVE|MICROSTEP)\b</string>
-			<key>name</key>
-			<string>constant.arduino</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b(Adafruit_MotorShield|Adafruit_DCMotor|Adafruit_StepperMotor|CapacitiveSensor|LiquidCrystal_I2C|TinyGPS|AF_DCMotor|AF_Stepper)\b</string>
-			<key>name</key>
-			<string>storage.modifier.arduino</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b(enable|run|setSpeed|step|onestep|release|getMotor|getStepper|setPin|setPWM|capacitiveSensorRaw|capacitiveSensor|set_CS_Timeout_Millis|reset_CS_AutoCal|set_CS_AutocaL_Millis|init|begin|clear|home|noDisplay|display|noBlink|blink|noCursor|cursor|scrollDisplayLeft|scrollDisplayRight|leftToRight|rightToLeft|shiftIncrement|shiftDecrement|noBacklight|backlight|autoscroll|noAutoscroll|createChar|setCursor|print|blink_on|blink_off|cursor_on|cursor_off|setBacklight|load_custom_character|printstr|encode|get_position|get_datetime|altitude|speed|course|stats|f_get_position|crack_datetime|f_altitude|f_course|f_speed_knots|f_speed_mph|f_speed_mps|f_speed_kmph|library_version|distance_between|enable|run|setSpeed|step|onestep|release)\b</string>
-			<key>name</key>
-			<string>support.function.arduino</string>
-		</dict>
 
 		<!-- 
 		supplement (slightly modified) taken from:

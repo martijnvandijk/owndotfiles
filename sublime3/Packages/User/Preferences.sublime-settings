@@ -8,13 +8,13 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"WordCount",
-		"Theme - Soda",
 		"Git",
-		"Markdown Preview",
-		"SideBarEnhancements",
+		"WordCount",
 		"Jedi - Python autocompletion",
-		"Markdown"
+		"Theme - Soda",
+		"Markdown",
+		"SideBarEnhancements",
+		"Markdown Preview"
 	],
 	"ignored_words":
 	[
