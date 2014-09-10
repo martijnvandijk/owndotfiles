@@ -11,8 +11,10 @@
 		"GitGutter",
 		"Jedi - Python autocompletion",
 		"LaTeXing",
+		"LiveReload",
 		"Markdown Preview",
 		"MarkdownEditing",
+		"Markmon real-time markdown preview",
 		"PlainTasks",
 		"SideBarEnhancements",
 		"SQLExec",
@@ -20,6 +22,7 @@
 		"SublimeREPL",
 		"Theme - Soda",
 		"Theme - Sodarized",
+		"W3CValidators",
 		"WordCount"
 	]
 }
