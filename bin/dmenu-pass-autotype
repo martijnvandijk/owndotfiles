@@ -27,4 +27,4 @@ fi
 printf "Using $choice.\n" 1>&2
 
 # delegate to pass 
-exec pass-autotype "$choice" $*
+exec $HOME/.dotfiles/bin/pass-autotype "$choice" $*
