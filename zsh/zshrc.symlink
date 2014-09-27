@@ -56,4 +56,5 @@ alias sublime="subl"
 
 PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$PATH:/sbin/"
 eval "$(rbenv init -)"
