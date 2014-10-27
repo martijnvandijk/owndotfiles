@@ -1,0 +1,5 @@
+xinput set-int-prop "Rflink Taipei Orbit Elite Wireless Trackball  " "Evdev Wheel Emulation Button" 8 "3"
+xinput set-int-prop "Rflink Taipei Orbit Elite Wireless Trackball  " "Evdev Wheel Emulation" 8 1
+
+xinput set-int-prop "Rflink Taipei Orbit Elite Wireless Trackball  " "Evdev Middle Button Emulation" 8 1
+xinput set-prop "Rflink Taipei Orbit Elite Wireless Trackball  " "Evdev Wheel Emulation Axes" 6 7 4 5
