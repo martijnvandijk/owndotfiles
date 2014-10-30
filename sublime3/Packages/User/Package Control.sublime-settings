@@ -11,6 +11,7 @@
 		"Git",
 		"GitGutter",
 		"HexViewer",
+		"HTML-CSS-JS Prettify",
 		"Jedi - Python autocompletion",
 		"LaTeXing",
 		"LiveReload",
@@ -23,9 +24,16 @@
 		"SQLExec",
 		"SublimeCodeIntel",
 		"SublimeREPL",
+		"Theme - amCoder",
+		"Theme - Cobalt2",
+		"Theme - Night",
 		"Theme - Soda",
+		"Theme - Soda SolarizedDark",
 		"Theme - Sodarized",
+		"Theme - Spacegray",
+		"Theme - Vim Blackboard",
 		"W3CValidators",
-		"WordCount"
+		"WordCount",
+		"zenburn"
 	]
 }
