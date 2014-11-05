@@ -38,10 +38,11 @@ For more portability you can use `todolist.txt` either as a filename or as suffi
 
 `--` and then `tab key` will give you this: `--- ✄ -----------------------`
 
-☐ Couple of tags are in completion rules:  
+☐ Completion rules:  
 
 - type `s`, press tab key — it'll become `@started` — press tab again and current date will be inserted, when you'll complete or cancel a task with such tag, you'll know how many time has passed since start;
 - type `t`, press tab key — it'll become `@today` — this one is highlighted differently than other tags, you can easily spot which task is important.
+- `tg` and twice tab key work in the same manner as `s`, but inserts `@toggle(current date)` — so you can pause and resume to get more correct result when done/cancel; each toggle tag is either pause or resume depending on its place in sequence.
 
 ☐ You can create a link to a file within your project by prefixing the file name with a dot and (back)slash like: `.\filename\` or `./another filename/`.  
   The line and column can be specified by colons: `.\filename:11:8`.  
@@ -102,6 +103,46 @@ add these settings to the json file:
 PlainTasks comes with a custom todo icon that you can find in the `icons` folder. You can assign it to your todo files to give them a better look and distinguish them from other plain text files. Google and find out how to assign a custom icon to a file type in your operating system.
 
 ![](http://f.cl.ly/items/2t312B30121l2X1l0927/todo-icon.png)
+
+## [BONUS] Custom Statistics
+Statistics of current file are represented in status-bar, based on `stats_format`, which is `"$n/$a done ($percent%) $progress Last task @done $last"` by default — as you can see it’s just a string containing special directives (see table bellow) and regular chars.
+
+| Directive    | Description                                           |
+| ------------ | ----------------------------------------------------- |
+| `$o`         | Amount of pending tasks                               |
+| `$d`         | Amount of completed tasks                             |
+| `$c`         | Amount of cancelled tasks                             |
+| `$n`         | Sum of completed and cancelled tasks                  |
+| `$a`         | Sum of all tasks                                      |
+| `$percent`   | Ratio of `$n` to `$a`                                 |
+| `$progress`  | Percent as pseudo graphics (absents if less than 10%) |
+| `$last`      | Date of lastly completed task                         |
+
+So you can customise it as you like, by adding to `Settings - User`, e.g.
+
+```json
+{
+    "stats_format": "☐$o ✔$d ✘$c",
+
+    // if you want the statistics do not include the archived tasks:
+    "stats_ignore_archive": true
+}
+```
+
+### Copy statistics
+Bring up the command palette and type `Tasks: Copy Statistics`.
+
+### Additional settings for progress bar
+```json
+{
+    "bar_full": "■",   // any char
+    "bar_empty": "☐", // any char
+
+    // if you want to avoid Unicode when copy stats — you can define replacements
+    // e.g. to convert ■■■■■■☐☐☐☐ to [======    ]
+    "replace_stats_chars": [[" ■", " [="], ["■", "="], ["☐ ", " ] "], ["☐", " "]]
+}
+```
 
 ## [Introduction to PlainTasks Screencast](https://tutsplus.com/lesson/pretty-task-management/)
 [![](http://i46.tinypic.com/9ggbd3.png)](https://tutsplus.com/lesson/pretty-task-management/)
