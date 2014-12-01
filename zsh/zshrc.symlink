@@ -41,6 +41,7 @@ export PATH="$HOME/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbi
 # export MANPATH="/usr/local/man:$MANPATH"
 EDITOR=vim
 alias sublime="subl"
+alias sdnf="sudo dnf"
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
