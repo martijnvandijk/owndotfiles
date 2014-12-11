@@ -4,9 +4,18 @@
 	{
 		"use": ""
 	},
-	"message_id": 18,
+	"message_id": 19,
 	"project_data":
 	{
-		"2": null
+		"2":
+		{
+			"folders":
+			[
+				{
+					"follow_symlinks": true,
+					"path": "/home/martijn/Documents/HU/ClassesBlokB/Organisatiekunde"
+				}
+			]
+		}
 	}
 }

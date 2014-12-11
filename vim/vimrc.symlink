@@ -2,3 +2,11 @@ syntax on
 
 " Wrap gitcommit file types at the appropriate length
 filetype indent plugin on
+
+" Remap movement keys
+noremap h h
+noremap t j
+noremap n k
+noremap s l
+noremap l n
+noremap L N

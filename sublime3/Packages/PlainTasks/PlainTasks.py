@@ -6,7 +6,9 @@ import re
 import sublime
 import sublime_plugin
 import webbrowser
+import itertools
 from datetime import datetime
+from datetime import timedelta
 if int(sublime.version()) < 3000:
     import locale
 
@@ -41,11 +43,11 @@ class PlainTasksBase(sublime_plugin.TextCommand):
 
 class PlainTasksNewCommand(PlainTasksBase):
     def runCommand(self, edit):
-        selections = list(self.view.sel()) # for ST3 support
-        selections.reverse() # because with multiple selections regions would be messed up after first iteration
-        for region in selections:
-            line = self.view.line(region)
-            line_contents = self.view.substr(line).rstrip()
+        # list for ST3 support;
+        # reversed because with multiple selections regions would be messed up after first iteration
+        regions = itertools.chain(*(reversed(self.view.lines(region)) for region in reversed(list(self.view.sel()))))
+        for line in regions:
+            line_contents  = self.view.substr(line).rstrip()
             not_empty_line = re.match('^(\s*)(\S.+)$', self.view.substr(line))
             empty_line     = re.match('^(\s+)$', self.view.substr(line))
             current_scope  = self.view.scope_name(line.a)
@@ -74,13 +76,13 @@ class PlainTasksNewCommand(PlainTasksBase):
         # convert each selection to single cursor, ready to type
         new_selections = []
         for sel in list(self.view.sel()):
-            if not sel.empty():
-                new_selections.append(sublime.Region(sel.b, sel.b))
-            else:
-                new_selections.append(sel)
+            eol = self.view.line(sel).b
+            new_selections.append(sublime.Region(eol, eol))
         self.view.sel().clear()
         for sel in new_selections:
             self.view.sel().add(sel)
+
+        PlainTasksStatsStatus.set_stats(self.view)
 
 
 class PlainTasksCompleteCommand(PlainTasksBase):
@@ -92,40 +94,54 @@ class PlainTasksCompleteCommand(PlainTasksBase):
             done_line_end = ' %s%s%s' % (self.done_tag, self.before_date_space, datetime.now().strftime(self.date_format))
         offset = len(done_line_end)
         rom = r'^(\s*)(\[\s\]|.)(\s*.*)$'
-        rdm = r'^(\s*)(\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
-        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
+        rdm = r'''
+            (?x)^(\s*)(\[x\]|.)                           # 0,1 indent & bullet
+            (\s*[^\b]*?(?:[^\@]|(?<!\s)\@|\@(?=\s))*?\s*) #   2 very task
+            (?=
+              ((?:\s@done|@project|$).*)              # 3 ending either w/ done or w/o it & no date
+              |                                       #   or
+              (?:(\([^()]*\))\s*([^@]*|@project.*))?$ # 4 date & possible project tag after
+            )
+            '''  # rcm is the same, except bullet & ending
+        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?(?:[^\@]|(?<!\s)\@|\@(?=\s))*?\s*)(?=((?:\s@cancelled|@project|$).*)|(?:(\([^()]*\))\s*([^@]*|@project.*))?$)'
         started = r'^\s*[^\b]*?\s*@started(\([\d\w,\.:\-\/ @]*\)).*$'
-        for region in self.view.sel():
-            line = self.view.line(region)
-            line_contents = self.view.substr(line).rstrip()
+        toggle = r'@toggle(\([\d\w,\.:\-\/ @]*\))'
+
+        regions = itertools.chain(*(reversed(self.view.lines(region)) for region in reversed(list(self.view.sel()))))
+        for line in regions:
+            line_contents = self.view.substr(line)
             open_matches = re.match(rom, line_contents, re.U)
             done_matches = re.match(rdm, line_contents, re.U)
             canc_matches = re.match(rcm, line_contents, re.U)
             started_matches = re.match(started, line_contents, re.U)
+            toggle_matches = re.findall(toggle,line_contents, re.U)
+
             current_scope = self.view.scope_name(line.a)
             if 'pending' in current_scope:
                 grps = open_matches.groups()
                 eol = self.view.insert(edit, line.end(), done_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2])
                 self.view.replace(edit, line, replacement)
                 if started_matches:
                     eol -= len(grps[1]) - len(self.done_tasks_bullet)
-                    self.calc_end_start_time(self, edit, line, started_matches.group(1), done_line_end, eol)
+                    self.calc_end_start_time(self, edit, line, started_matches.group(1), toggle_matches, done_line_end, eol)
             elif 'header' in current_scope:
                 eol = self.view.insert(edit, line.end(), done_line_end)
                 if started_matches:
-                    self.calc_end_start_time(self, edit, line, started_matches.group(1), done_line_end, eol)
+                    self.calc_end_start_time(self, edit, line, started_matches.group(1), toggle_matches, done_line_end, eol)
                 indent = re.match('^(\s*)\S', line_contents, re.U)
                 self.view.insert(edit, line.begin() + len(indent.group(1)), '%s ' % self.done_tasks_bullet)
             elif 'completed' in current_scope:
                 grps = done_matches.groups()
-                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2].rstrip())
+                parentheses = self.check_parentheses(self.date_format, grps[4] or '')
+                replacement = u'%s%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2], parentheses)
                 self.view.replace(edit, line, replacement)
                 offset = -offset
             elif 'cancelled' in current_scope:
                 grps = canc_matches.groups()
                 self.view.insert(edit, line.end(), done_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2].rstrip())
+                parentheses = self.check_parentheses(self.date_format, grps[4] or '')
+                replacement = u'%s%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2], parentheses)
                 self.view.replace(edit, line, replacement)
                 offset = -offset
         self.view.sel().clear()
@@ -134,11 +150,36 @@ class PlainTasksCompleteCommand(PlainTasksBase):
             new_pt = sublime.Region(pt.a + ofs, pt.b + ofs)
             self.view.sel().add(new_pt)
 
+        PlainTasksStatsStatus.set_stats(self.view)
+
     @staticmethod
-    def calc_end_start_time(self, edit, line, started_matches, done_line_end, eol, tag='lasted'):
+    def calc_end_start_time(self, edit, line, started_matches, toggle_matches, done_line_end, eol, tag='lasted'):
         start = datetime.strptime(started_matches, self.date_format)
         end = datetime.strptime(done_line_end.replace('@done', '').replace('@cancelled', '').strip(), self.date_format)
-        self.view.insert(edit, line.end() + eol, ' @%s(%s)' % (tag, str(end - start)))
+
+        toggle_times = [datetime.strptime(toggle,self.date_format) for toggle in toggle_matches]
+        all_times = [start] + toggle_times + [end]
+        pairs = zip(all_times[::2], all_times[1::2])
+        deltas = [pair[1] - pair[0] for pair in pairs]
+
+        delta = str(sum(deltas, timedelta()))
+        if delta[~2:] == ':00': # strip meaningless seconds
+            delta = delta[:~2]
+        self.view.insert(edit, line.end() + eol, ' @%s(%s)' % (tag, delta))
+
+    @staticmethod
+    def check_parentheses(date_format, regex_group, is_date=False):
+        if is_date:
+            try:
+                parentheses = regex_group if datetime.strptime(regex_group.strip(), date_format) else ''
+            except ValueError:
+                parentheses = ''
+        else:
+            try:
+                parentheses = '' if datetime.strptime(regex_group.strip(), date_format) else regex_group
+            except ValueError:
+                parentheses = regex_group
+        return parentheses
 
 
 class PlainTasksCancelCommand(PlainTasksBase):
@@ -150,40 +191,45 @@ class PlainTasksCancelCommand(PlainTasksBase):
             canc_line_end = ' %s%s%s' % (self.canc_tag,self.before_date_space, datetime.now().strftime(self.date_format))
         offset = len(canc_line_end)
         rom = r'^(\s*)(\[\s\]|.)(\s*.*)$'
-        rdm = r'^(\s*)(\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
-        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
+        rdm = r'^(\s*)(\[x\]|.)(\s*[^\b]*?(?:[^\@]|(?<!\s)\@|\@(?=\s))*?\s*)(?=((?:\s@done|@project|$).*)|(?:(\([^()]*\))\s*([^@]*|@project.*))?$)'
+        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?(?:[^\@]|(?<!\s)\@|\@(?=\s))*?\s*)(?=((?:\s@cancelled|@project|$).*)|(?:(\([^()]*\))\s*([^@]*|@project.*))?$)'
         started = '^\s*[^\b]*?\s*@started(\([\d\w,\.:\-\/ @]*\)).*$'
-        for region in self.view.sel():
-            line = self.view.line(region)
-            line_contents = self.view.substr(line).rstrip()
+        toggle = r'@toggle(\([\d\w,\.:\-\/ @]*\))'
+        regions = itertools.chain(*(reversed(self.view.lines(region)) for region in reversed(list(self.view.sel()))))
+        for line in regions:
+            line_contents = self.view.substr(line)
             open_matches = re.match(rom, line_contents, re.U)
             done_matches = re.match(rdm, line_contents, re.U)
             canc_matches = re.match(rcm, line_contents, re.U)
             started_matches = re.match(started, line_contents, re.U)
+            toggle_matches = re.findall(toggle,line_contents, re.U)
+
             current_scope = self.view.scope_name(line.a)
             if 'pending' in current_scope:
                 grps = open_matches.groups()
                 eol = self.view.insert(edit, line.end(), canc_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2])
                 self.view.replace(edit, line, replacement)
                 if started_matches:
                     eol -= len(grps[1]) - len(self.canc_tasks_bullet)
-                    PlainTasksCompleteCommand.calc_end_start_time(self, edit, line, started_matches.group(1), canc_line_end, eol, tag='wasted')
+                    PlainTasksCompleteCommand.calc_end_start_time(self, edit, line, started_matches.group(1), toggle_matches, canc_line_end, eol, tag='wasted')
             elif 'header' in current_scope:
                 eol = self.view.insert(edit, line.end(), canc_line_end)
                 if started_matches:
-                    PlainTasksCompleteCommand.calc_end_start_time(self, edit, line, started_matches.group(1), canc_line_end, eol, tag='wasted')
+                    PlainTasksCompleteCommand.calc_end_start_time(self, edit, line, started_matches.group(1), toggle_matches, canc_line_end, eol, tag='wasted')
                 indent = re.match('^(\s*)\S', line_contents, re.U)
                 self.view.insert(edit, line.begin() + len(indent.group(1)), '%s ' % self.canc_tasks_bullet)
             elif 'completed' in current_scope:
                 sublime.status_message('You cannot cancel what have been done, can you?')
                 # grps = done_matches.groups()
-                # replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2].rstrip())
+                # parentheses = PlainTasksCompleteCommand.check_parentheses(self.date_format, grps[4] or '')
+                # replacement = u'%s%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2], parentheses)
                 # self.view.replace(edit, line, replacement)
                 # offset = -offset
             elif 'cancelled' in current_scope:
                 grps = canc_matches.groups()
-                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2].rstrip())
+                parentheses = PlainTasksCompleteCommand.check_parentheses(self.date_format, grps[4] or '')
+                replacement = u'%s%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2], parentheses)
                 self.view.replace(edit, line, replacement)
                 offset = -offset
         self.view.sel().clear()
@@ -191,6 +237,8 @@ class PlainTasksCancelCommand(PlainTasksBase):
             ofs = ind * offset
             new_pt = sublime.Region(pt.a + ofs, pt.b + ofs)
             self.view.sel().add(new_pt)
+
+        PlainTasksStatsStatus.set_stats(self.view)
 
 
 class PlainTasksArchiveCommand(PlainTasksBase):
@@ -220,7 +268,8 @@ class PlainTasksArchiveCommand(PlainTasksBase):
                 self.view.insert(edit, self.view.size(), create_archive)
                 line = self.view.size()
 
-            projects = self.view.find_all('^\s*(\w+.+:\s*(\@[^\s]+(\(.*?\))?\s*)*$\n?)|^\s*---.{3,5}---+$', 0)
+            projects = sorted(self.view.find_by_selector('keyword.control.header.todo') +
+                              self.view.find_by_selector('meta.punctuation.separator.todo'))
 
             # adding tasks to archive section
             for task in all_tasks:
@@ -342,7 +391,15 @@ class PlainTasksOpenUrlCommand(sublime_plugin.TextCommand):
 
 
 class PlainTasksOpenLinkCommand(sublime_plugin.TextCommand):
-    LINK_PATTERN = re.compile(r'\.[\\/](?P<fn>[^\\/:*?"<>|]+)+[\\/]?(>(?P<sym>\w+))?(\:(?P<line>\d+))?(\:(?P<col>\d+))?(\"(?P<text>[^\n]*)\")?', re.I| re.U)
+    LINK_PATTERN = re.compile(
+        r'''(?ixu)\.[\\/]
+            (?P<fn>
+            (?:[a-z]\:[\\/])?      # special case for Windows full path
+            (?:[^\\/:">]+[\\/]?)+) # the very path (single filename/relative/full)
+            (?=[\\/:">])           # stop matching path
+                                   # options:
+            (>(?P<sym>\w+))?(\:(?P<line>\d+))?(\:(?P<col>\d+))?(\"(?P<text>[^\n]*)\")?
+        ''')
 
     def _format_res(self, res):
         return [res[0], "line: %d column: %d" % (int(res[1]), int(res[2]))]
@@ -365,11 +422,13 @@ class PlainTasksOpenLinkCommand(sublime_plugin.TextCommand):
             fn = fn.replace('/', os.sep)
             all_folders = win.folders() + [os.path.dirname(v.file_name()) for v in win.views() if v.file_name()]
             for folder in set(all_folders):
-                for root, dirnames, filenames in os.walk(folder):
+                for root, _, filenames in os.walk(folder):
                     filenames = [os.path.join(root, f) for f in filenames]
                     for name in filenames:
                         if name.lower().endswith(fn.lower()):
-                            self._current_res.append((name, line if line else 0, col if col else 0))
+                            self._current_res.append((name, line or 0, col or 0))
+            if os.path.isfile(fn): # check for full path
+                self._current_res.append((fn, line or 0, col or 0))
             self._current_res = list(set(self._current_res))
         if len(self._current_res) == 1:
             self._on_panel_selection(0)
@@ -433,6 +492,7 @@ class PlainTasksConvertToHtml(PlainTasksBase):
         return self.view.score_selector(0, "text.todo") > 0
 
     def runCommand(self, edit):
+        import cgi
         all_lines_regions = self.view.split_by_newlines(sublime.Region(0, self.view.size()))
         html_doc = []
         patterns = {'HEADER'    : 'text.todo keyword.control.header.todo ',
@@ -448,10 +508,10 @@ class PlainTasksConvertToHtml(PlainTasksBase):
             i = self.view.scope_name(r.a)
 
             if patterns['HEADER'] in i:
-                ht = '<span class="header">%s</span>' % self.view.substr(r)
+                ht = '<span class="header">%s</span>' % cgi.escape(self.view.substr(r))
 
             elif i == patterns['EMPTY']:
-                # these are empty lines
+                # these are empty lines (i.e. linebreaks, but span can be {display:none})
                 ht = '<span class="empty-line">%s</span>' % self.view.substr(r)
 
             elif patterns['NOTE'] in i:
@@ -460,11 +520,11 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                 for s in scopes:
                     sn = self.view.scope_name(s.a)
                     if 'italic' in sn:
-                        note += '<i>%s</i>' % self.view.substr(s).replace('_', '').replace('*', '')
+                        note += '<i>%s</i>' % cgi.escape(self.view.substr(s).strip('_*'))
                     elif 'bold' in sn:
-                        note += '<b>%s</b>' % self.view.substr(s).replace('_', '').replace('*', '')
+                        note += '<b>%s</b>' % cgi.escape(self.view.substr(s).strip('_*'))
                     else:
-                        note += self.view.substr(s)
+                        note += cgi.escape(self.view.substr(s))
                 ht = note + '</span>'
 
             elif patterns['OPEN'] in i:
@@ -476,11 +536,11 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                     if 'bullet' in sn:
                         pending += '<span class="bullet-pending">%s</span>' % self.view.substr(s)
                     elif 'meta.tag' in sn:
-                        pending += '<span class="tag">%s</span>' % self.view.substr(s)
+                        pending += '<span class="tag">%s</span>' % cgi.escape(self.view.substr(s))
                     elif 'tag.todo.today' in sn:
                         pending += '<span class="tag-today">%s</span>' % self.view.substr(s)
                     else:
-                        pending += self.view.substr(s)
+                        pending += cgi.escape(self.view.substr(s))
                 ht = pending + '</span>'
 
             elif patterns['DONE'] in i:
@@ -492,9 +552,9 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                     if 'bullet' in sn:
                         done += '<span class="bullet-done">%s</span>' % self.view.substr(s)
                     elif 'tag.todo.completed' in sn:
-                        done += '<span class="tag-done">%s</span>' % self.view.substr(s)
+                        done += '<span class="tag-done">%s</span>' % cgi.escape(self.view.substr(s))
                     else:
-                        done += self.view.substr(s)
+                        done += cgi.escape(self.view.substr(s))
                 ht = done + '</span>'
 
             elif patterns['CANCELLED'] in i:
@@ -506,16 +566,16 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                     if 'bullet' in sn:
                         cancelled += '<span class="bullet-cancelled">%s</span>' % self.view.substr(s)
                     elif 'tag.todo.cancelled' in sn:
-                        cancelled += '<span class="tag-cancelled">%s</span>' % self.view.substr(s)
+                        cancelled += '<span class="tag-cancelled">%s</span>' % cgi.escape(self.view.substr(s))
                     else:
-                        cancelled += self.view.substr(s)
+                        cancelled += cgi.escape(self.view.substr(s))
                 ht = cancelled + '</span>'
 
             elif patterns['SEPARATOR'] in i:
-                ht = sep = '<span class="sep">%s</span>' % self.view.substr(r)
+                ht = '<span class="sep">%s</span>' % cgi.escape(self.view.substr(r))
 
             elif patterns['ARCHIVE'] in i:
-                ht = sep_archive = '<span class="sep-archive">%s</span>' % self.view.substr(r)
+                ht = '<span class="sep-archive">%s</span>' % cgi.escape(self.view.substr(r))
 
             else:
                 sublime.error_message('Hey! you are not supposed to see this message.\n'
@@ -545,12 +605,13 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                 else: # multi-line
                     sr = sublime.Region(region.a, region.b + 1)
             # main block, add unique entity to the list
-            if sr != region and sr.b - 1 <= region.b and sr not in scopes:
+            if sr not in scopes:
                 scopes.append(sr)
             # fix intersecting regions, e.g. markup in notes
             if scopes and sr.a < scopes[~0].b and p - 1 == scopes[~0].b:
                 scopes.append(sublime.Region(scopes[~0].b, sr.b))
-        if len(scopes) > 1:
+        ln = len(scopes)
+        if ('note' in scope_name and ln > 1) or ln > 2:
             # fix bullet
             if scopes[0].intersects(scopes[1]):
                 scopes[0] = sublime.Region(scopes[0].a, scopes[1].a)
@@ -565,3 +626,67 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                     else:
                         scopes[~(i + 1)] = sublime.Region(scopes[~(i + 1)].a, s.a)
         return scopes
+
+
+class PlainTasksStatsStatus(sublime_plugin.EventListener):
+    def on_activated(self, view):
+        if not view.score_selector(0, "text.todo") > 0:
+            return
+        self.set_stats(view)
+
+    @staticmethod
+    def set_stats(view):
+        view.set_status('PlainTasks', PlainTasksStatsStatus.get_stats(view))
+
+    @staticmethod
+    def get_stats(view):
+        msgf = view.settings().get('stats_format', '$n/$a done ($percent%) $progress Last task @done $last')
+        ignore_archive = view.settings().get('stats_ignore_archive', False)
+        if ignore_archive:
+            archive_pos = view.find(view.settings().get('archive_name'), 0, sublime.LITERAL)
+            pend = len([i for i in view.find_by_selector('meta.item.todo.pending') if i.a < (archive_pos.a if archive_pos and archive_pos.a > 0 else view.size())])
+            done = len([i for i in view.find_by_selector('meta.item.todo.completed') if i.a < (archive_pos.a if archive_pos and archive_pos.a > 0 else view.size())])
+            canc = len([i for i in view.find_by_selector('meta.item.todo.cancelled') if i.a < (archive_pos.a if archive_pos and archive_pos.a > 0 else view.size())])
+        else:
+            pend = len(view.find_by_selector('meta.item.todo.pending'))
+            done = len(view.find_by_selector('meta.item.todo.completed'))
+            canc = len(view.find_by_selector('meta.item.todo.cancelled'))
+        allt = pend + done + canc
+        percent  = ((done+canc)/float(allt))*100 if allt else 0
+        factor   = int(round(percent/10)) if percent<90 else int(percent/10)
+
+        barfull  = view.settings().get('bar_full', u'■')
+        barempty = view.settings().get('bar_empty', u'☐')
+        progress = '%s%s' % (barfull*factor, barempty*(10-factor)) if factor else ''
+
+        tasks_dates = []
+        view.find_all('(^\s*[^\n]*?\s\@(?:done)\s*(\([\d\w,\.:\-\/ ]*\))[^\n]*$)', 0, "\\2", tasks_dates)
+        date_format = view.settings().get('date_format')
+        tasks_dates = [PlainTasksCompleteCommand.check_parentheses(date_format, t, is_date=True) for t in tasks_dates]
+        tasks_dates.sort(reverse=True)
+        last = tasks_dates[0] if tasks_dates else '(UNKOWN)'
+
+        msg = (msgf.replace('$o', str(pend))
+                   .replace('$d', str(done))
+                   .replace('$c', str(canc))
+                   .replace('$n', str(done+canc))
+                   .replace('$a', str(allt))
+                   .replace('$percent', str(int(percent)))
+                   .replace('$progress', progress)
+                   .replace('$last', last)
+                )
+        return msg
+
+
+class PlainTasksCopyStats(sublime_plugin.TextCommand):
+    def is_enabled(self):
+        return self.view.score_selector(0, "text.todo") > 0
+
+    def run(self, edit):
+        msg = self.view.get_status('PlainTasks')
+        replacements = self.view.settings().get('replace_stats_chars', [])
+        if replacements:
+            for o, r in replacements:
+                msg = msg.replace(o, r)
+
+        sublime.set_clipboard(msg)
